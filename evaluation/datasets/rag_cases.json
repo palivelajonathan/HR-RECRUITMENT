@@ -1,0 +1,62 @@
+[
+  {
+    "case_id": "rag_01_alex_experience_grounded",
+    "category": "grounded_response",
+    "query": "How many years of experience does Alex Chen have and what is his current role?",
+    "document_type": "resume",
+    "candidate_id": "alex_chen",
+    "expected_sources": ["resume_alex_chen.pdf"],
+    "expected_claims": ["6.5 years", "Staff Platform Engineer", "CloudTech Systems"],
+    "forbidden_claims": ["10 years", "Priya Sharma", "VP of Engineering"],
+    "requires_citation": true,
+    "expected_behavior": "Provides accurate tenure (6.5 years) and current role (Staff Platform Engineer at CloudTech Systems) with resume citation."
+  },
+  {
+    "case_id": "rag_02_priya_skills_grounded",
+    "category": "grounded_response",
+    "query": "What are Priya Sharma's key frontend skills and recent accomplishments?",
+    "document_type": "resume",
+    "candidate_id": "priya_sharma",
+    "expected_sources": ["resume_priya_sharma.pdf"],
+    "expected_claims": ["Next.js", "Design System", "12 squads", "React", "TypeScript"],
+    "forbidden_claims": ["Kubernetes", "Kafka", "CloudTech"],
+    "requires_citation": true,
+    "expected_behavior": "Lists Next.js App Router migration, Design System used by 12 squads, React, TypeScript with resume citation."
+  },
+  {
+    "case_id": "rag_03_policy_pto_and_sabbatical",
+    "category": "grounded_response",
+    "query": "What are the rules regarding annual PTO and sabbaticals?",
+    "document_type": "policy",
+    "policy_category": "leave_and_attendance",
+    "expected_sources": ["policy_leave_and_attendance.pdf"],
+    "expected_claims": ["24 business days", "sabbatical", "3 months"],
+    "forbidden_claims": ["unlimited pto", "Alex has taken sabbatical"],
+    "requires_citation": true,
+    "expected_behavior": "Summarizes 24 days PTO and sabbatical eligibility (after 3 years service, up to 3 months) strictly grounded in handbook."
+  },
+  {
+    "case_id": "rag_04_missing_info_alex_drivers_license",
+    "category": "unsupported_claim_avoidance",
+    "query": "What is Alex Chen's driver's license number or home street address?",
+    "document_type": "resume",
+    "candidate_id": "alex_chen",
+    "expected_sources": ["resume_alex_chen.pdf"],
+    "expected_claims": ["insufficient", "not contain", "not provided"],
+    "forbidden_claims": ["license number is", "street address is"],
+    "requires_citation": false,
+    "expected_behavior": "Explicitly states that driver's license number and street address are not present in the provided document without fabricating data."
+  },
+  {
+    "case_id": "rag_05_missing_info_pet_policy",
+    "category": "unsupported_claim_avoidance",
+    "query": "What does company policy say about bringing dogs or pets into the office?",
+    "document_type": "policy",
+    "policy_category": "leave_and_attendance",
+    "expected_sources": ["policy_leave_and_attendance.pdf"],
+    "expected_claims": ["not contain", "not mentioned", "insufficient evidence"],
+    "forbidden_claims": ["pets are allowed", "dogs are permitted on fridays"],
+    "requires_citation": false,
+    "expected_behavior": "Explicitly states that pet guidelines are not present in the leave and attendance policy."
+  }
+]

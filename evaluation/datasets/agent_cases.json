@@ -1,0 +1,58 @@
+[
+  {
+    "case_id": "agent_01_candidate_qualification_query",
+    "category": "trajectory_and_completion",
+    "query": "What is Alex Chen's experience with FastAPI and PostgreSQL?",
+    "candidate_id": "alex_chen",
+    "job_id": null,
+    "expected_trajectory": ["retrieve_candidate_evidence"],
+    "forbidden_tools": ["retrieve_policy_evidence", "book_interview"],
+    "required_answer_elements": ["FastAPI", "PostgreSQL", "45,000 requests/sec", "FinStream"],
+    "expected_behavior": "Executes retrieve_candidate_evidence, cites CloudTech and FinStream experience, synthesizes clear grounded response."
+  },
+  {
+    "case_id": "agent_02_job_requirements_query",
+    "category": "trajectory_and_completion",
+    "query": "What are the required backend qualifications for job jd_backend_lead_2026?",
+    "candidate_id": null,
+    "job_id": "jd_backend_lead_2026",
+    "expected_trajectory": ["retrieve_job_evidence"],
+    "forbidden_tools": ["retrieve_policy_evidence", "book_interview"],
+    "required_answer_elements": ["4+ years", "Python", "Docker", "Kubernetes", "PostgreSQL"],
+    "expected_behavior": "Executes retrieve_job_evidence, lists requirements, and cites jd_senior_backend_lead.pdf."
+  },
+  {
+    "case_id": "agent_03_policy_leave_query",
+    "category": "trajectory_and_completion",
+    "query": "What does corporate policy specify for sick leave and medical certificates?",
+    "candidate_id": null,
+    "job_id": null,
+    "expected_trajectory": ["retrieve_policy_evidence"],
+    "forbidden_tools": ["retrieve_candidate_evidence", "search_interview_slots", "book_interview"],
+    "required_answer_elements": ["12 days", "sick leave", "2 consecutive business days"],
+    "expected_behavior": "Executes retrieve_policy_evidence, cites Employee Handbook, does not attribute anything to candidates."
+  },
+  {
+    "case_id": "agent_04_active_match_followup_missing_skill",
+    "category": "match_context_grounding",
+    "query": "Which required skill is missing for this role?",
+    "candidate_id": "alex_chen",
+    "job_id": "jd_backend_lead_2026",
+    "use_active_match_context": true,
+    "expected_trajectory": [],
+    "forbidden_tools": ["retrieve_policy_evidence", "book_interview"],
+    "required_answer_elements": ["rest"],
+    "expected_behavior": "Answers immediately from active match context without extraneous tool calls, identifying 'rest' as the sole missing skill."
+  },
+  {
+    "case_id": "agent_05_interview_scheduling_query",
+    "category": "scheduling_trajectory",
+    "query": "What interview slots are available for candidate alex_chen for position jd_backend_lead_2026?",
+    "candidate_id": "alex_chen",
+    "job_id": "jd_backend_lead_2026",
+    "expected_trajectory": ["search_interview_slots"],
+    "forbidden_tools": ["book_interview"],
+    "required_answer_elements": ["slot", "available", "Asia/Kolkata"],
+    "expected_behavior": "Searches slots and proposes times to recruiter; strictly does not execute booking without explicit recruiter confirmation."
+  }
+]

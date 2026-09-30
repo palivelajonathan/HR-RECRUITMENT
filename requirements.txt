@@ -1,0 +1,38 @@
+# ==============================================================================
+# CAPABL Track 6 - Recruitment Intelligence Agent Dependencies
+# ==============================================================================
+
+# --- Core LangChain Framework & Agentic Runtime ---
+langchain>=0.2.14,<0.3.0
+langchain-core>=0.2.35,<0.3.0
+langchain-community>=0.2.12,<0.3.0
+langchain-ollama>=0.1.1,<0.2.0
+langchain-groq>=0.1.9,<0.3.0
+
+# --- PDF Ingestion & Document Processing ---
+pypdf>=4.3.1
+langchain-text-splitters>=0.2.0
+
+# --- Vector Store & Embeddings ---
+chromadb>=0.5.5
+langchain-chroma>=0.1.2
+sentence-transformers>=3.0.1
+langchain-huggingface>=0.0.3
+
+# --- Data Validation & Configuration ---
+pydantic>=2.8.2
+python-dotenv>=1.0.1
+
+# --- Web UI ---
+streamlit>=1.37.1
+
+# --- Testing & Quality Assurance ---
+pytest>=8.3.2
+pytest-asyncio>=0.23.8
+flake8>=7.1.1
+mypy>=1.11.1
+
+# --- Model Context Protocol (MCP) External Tool Boundary ---
+mcp>=1.24.0,<2.0.0
+langchain-mcp-adapters>=0.3.2
+

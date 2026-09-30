@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: recruitment_ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:11434/api/tags || exit 1"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+
+  agent-app:
+    build:
+      context: ../..
+      dockerfile: infra/docker/Dockerfile
+    container_name: recruitment_agent_ui
+    ports:
+      - "8501:8501"
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - OLLAMA_MODEL=qwen3:8b
+      - CHROMA_PERSIST_DIRECTORY=/app/data/chroma_db
+    volumes:
+      - chroma_data:/app/data/chroma_db
+      - ../../data/resumes:/app/data/resumes
+      - ../../data/job_descriptions:/app/data/job_descriptions
+    depends_on:
+      ollama:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  ollama_data:
+  chroma_data:

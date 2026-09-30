@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: recruitment-agent-config
+  namespace: recruitment-ai
+data:
+  APP_ENV: "production"
+  LLM_PROVIDER: "ollama"
+  OLLAMA_BASE_URL: "http://ollama-service.recruitment-ai.svc.cluster.local:11434"
+  OLLAMA_MODEL: "qwen3:8b"
+  OLLAMA_TEMPERATURE: "0.1"
+  EMBEDDING_MODEL_NAME: "BAAI/bge-small-en-v1.5"
+  CHROMA_COLLECTION_NAME: "recruitment_resumes"
+  CHROMA_PERSIST_DIRECTORY: "/app/data/chroma_db"
+  AUDIT_LOG_DIR: "/app/logs/audit"
+  AUDIT_LOG_PATH: "/app/logs/audit/audit_trail.jsonl"
+  AUDIT_MAX_BYTES: "10485760"
+  AUDIT_BACKUP_COUNT: "5"
+  MAX_UPLOAD_SIZE_MB: "10"
+  MAX_PDF_PAGES: "20"
+  MAX_DOCUMENT_CHUNKS: "100"
+  MAX_QUERY_LENGTH: "1000"
+  LLM_TIMEOUT_SECONDS: "60"
+  LOG_LEVEL: "INFO"
+  ENHANCEMENT_GATEKEEPER_ENABLED: "true"
+  STREAMLIT_SERVER_PORT: "8501"
+  STREAMLIT_SERVER_ADDRESS: "0.0.0.0"

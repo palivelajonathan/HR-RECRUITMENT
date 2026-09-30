@@ -1,0 +1,53 @@
+# ==============================================================================
+# .dockerignore: Production Docker Build Exclusion Filter
+# ==============================================================================
+
+# Version control & metadata
+.git/
+.gitignore
+.gitattributes
+
+# Environment secrets & local config
+.env
+.env.*
+!.env.example
+
+# Virtual environments
+venv/
+.venv/
+ENV/
+env/
+
+# Python byte code & caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+build/
+dist/
+
+# Local databases & persistent storage (mounted via volumes)
+data/chroma_db/
+data/backups/
+data/memory/
+logs/
+*.sqlite
+*.sqlite3
+*.db
+
+# Temporary & developer scratch files
+scratch/
+tmp/
+temp/
+.idea/
+.vscode/
+*.swp
+*.swo
+Thumbs.db
+.DS_Store
+
+# Evaluation baseline dumps
+evaluation/reports/*.json

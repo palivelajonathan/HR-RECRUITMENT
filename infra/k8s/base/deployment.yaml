@@ -1,0 +1,83 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recruitment-agent-app
+  namespace: recruitment-ai
+  labels:
+    app.kubernetes.io/name: recruitment-agent-app
+    app.kubernetes.io/part-of: recruitment-intelligence-system
+spec:
+  # NOTE: replicas must remain 1 due to ChromaDB SQLite single-writer persistence requirements.
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: recruitment-agent-app
+  template:
+    metadata:
+      labels:
+        app: recruitment-agent-app
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+      containers:
+        - name: agent-ui
+          image: recruitment-agent:latest
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+            capabilities:
+              drop:
+                - ALL
+          ports:
+            - containerPort: 8501
+              name: http
+          envFrom:
+            - configMapRef:
+                name: recruitment-agent-config
+            - secretRef:
+                name: recruitment-agent-secrets
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "1Gi"
+            limits:
+              cpu: "2000m"
+              memory: "4Gi"
+          livenessProbe:
+            httpGet:
+              path: /_stcore/health
+              port: 8501
+            initialDelaySeconds: 30
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /_stcore/health
+              port: 8501
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 2
+          volumeMounts:
+            - name: chroma-storage
+              mountPath: /app/data/chroma_db
+            - name: document-storage
+              mountPath: /app/data/resumes
+            - name: audit-storage
+              mountPath: /app/logs/audit
+      volumes:
+        - name: chroma-storage
+          persistentVolumeClaim:
+            claimName: chroma-pvc
+        - name: document-storage
+          persistentVolumeClaim:
+            claimName: documents-pvc
+        - name: audit-storage
+          emptyDir: {}

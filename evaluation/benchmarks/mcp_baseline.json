@@ -1,0 +1,569 @@
+{
+  "suite": "mcp",
+  "timestamp": "2026-09-27T19:02:51.763771+00:00",
+  "cases": 11,
+  "passed": 11,
+  "failed": 0,
+  "status": "PASS",
+  "metrics": {
+    "total_cases": 11,
+    "passed_cases": 11,
+    "failed_cases": 0,
+    "overall_mcp_pass_rate": 1.0,
+    "tool_discovery_accuracy": 1.0,
+    "tool_execution_accuracy": 1.0,
+    "isolation_preservation_rate": 1.0,
+    "authorization_gate_enforcement_rate": 1.0,
+    "prompt_injection_defense_rate": 1.0,
+    "security_validation_rate": 1.0
+  },
+  "details": [
+    {
+      "case_id": "mcp_01_tool_discovery",
+      "category": "tool_discovery",
+      "tool": "",
+      "passed": true,
+      "response": {
+        "discovered": [
+          "get_candidate_evidence",
+          "get_job_evidence",
+          "get_policy_evidence",
+          "search_interview_slots",
+          "book_interview"
+        ]
+      }
+    },
+    {
+      "case_id": "mcp_02_candidate_evidence_valid",
+      "category": "tool_execution",
+      "tool": "get_candidate_evidence",
+      "passed": true,
+      "response": {
+        "status": "success",
+        "tool": "get_candidate_evidence",
+        "candidate_id": "alex_chen",
+        "job_id": null,
+        "evidence": [
+          {
+            "document_type": "resume",
+            "document_id": "alex_chen",
+            "source": "resume_alex_chen.pdf",
+            "page": 0,
+            "excerpt": "Curriculum Vitae - Alex Chen\nCandidate Name: Alex Chen | Candidate ID: cand_alex_chen\nRole: Senior Backend & Distributed Systems Engineer | Experience: 6.5 Years\nSummary: Highly experienced software engineer specializing in distributed systems, asynchronous event\narchitectures, microservices, and high-volume data pipelines.\nCore Technical Skills: Python, FastAPI, Docker, Kubernetes, PostgreSQL, Redis, Apache Kafka, Distributed\nTransactions, Microservices, CI/CD, Linux.\nProfessional Experience:",
+            "candidate_id": "alex_chen",
+            "job_id": null,
+            "policy_category": null
+          },
+          {
+            "document_type": "resume",
+            "document_id": "alex_chen",
+            "source": "resume_alex_chen.pdf",
+            "page": 0,
+            "excerpt": "Transactions, Microservices, CI/CD, Linux.\nProfessional Experience:\n- Staff Platform Engineer at CloudTech Systems (2022 - Present): Architected microservices with Python and\nFastAPI handling 45,000 requests/sec. Orchestrated container workloads using Kubernetes and Helm.\n- Senior Backend Engineer at FinStream Corp (2019 - 2022): Designed robust database schemas in\nPostgreSQL, implemented distributed caching using Redis clusters, and optimized slow SQL queries.\nEducation: Bachelor of Science in Computer Science, State University.",
+            "candidate_id": "alex_chen",
+            "job_id": null,
+            "policy_category": null
+          }
+        ],
+        "sources": [
+          "resume_alex_chen.pdf"
+        ],
+        "data": {
+          "items": [
+            {
+              "document_type": "resume",
+              "document_id": "alex_chen",
+              "source": "resume_alex_chen.pdf",
+              "page": 0,
+              "excerpt": "Curriculum Vitae - Alex Chen\nCandidate Name: Alex Chen | Candidate ID: cand_alex_chen\nRole: Senior Backend & Distributed Systems Engineer | Experience: 6.5 Years\nSummary: Highly experienced software engineer specializing in distributed systems, asynchronous event\narchitectures, microservices, and high-volume data pipelines.\nCore Technical Skills: Python, FastAPI, Docker, Kubernetes, PostgreSQL, Redis, Apache Kafka, Distributed\nTransactions, Microservices, CI/CD, Linux.\nProfessional Experience:",
+              "candidate_id": "alex_chen",
+              "job_id": null,
+              "policy_category": null
+            },
+            {
+              "document_type": "resume",
+              "document_id": "alex_chen",
+              "source": "resume_alex_chen.pdf",
+              "page": 0,
+              "excerpt": "Transactions, Microservices, CI/CD, Linux.\nProfessional Experience:\n- Staff Platform Engineer at CloudTech Systems (2022 - Present): Architected microservices with Python and\nFastAPI handling 45,000 requests/sec. Orchestrated container workloads using Kubernetes and Helm.\n- Senior Backend Engineer at FinStream Corp (2019 - 2022): Designed robust database schemas in\nPostgreSQL, implemented distributed caching using Redis clusters, and optimized slow SQL queries.\nEducation: Bachelor of Science in Computer Science, State University.",
+              "candidate_id": "alex_chen",
+              "job_id": null,
+              "policy_category": null
+            }
+          ]
+        },
+        "error_code": null,
+        "message": "Retrieved 2 resume excerpts for candidate 'alex_chen'."
+      }
+    },
+    {
+      "case_id": "mcp_03_candidate_isolation_alex_priya",
+      "category": "candidate_isolation",
+      "tool": "get_candidate_evidence",
+      "passed": true,
+      "response": {
+        "status": "success",
+        "tool": "get_candidate_evidence",
+        "candidate_id": "alex_chen",
+        "job_id": null,
+        "evidence": [
+          {
+            "document_type": "resume",
+            "document_id": "alex_chen",
+            "source": "resume_alex_chen.pdf",
+            "page": 0,
+            "excerpt": "Transactions, Microservices, CI/CD, Linux.\nProfessional Experience:\n- Staff Platform Engineer at CloudTech Systems (2022 - Present): Architected microservices with Python and\nFastAPI handling 45,000 requests/sec. Orchestrated container workloads using Kubernetes and Helm.\n- Senior Backend Engineer at FinStream Corp (2019 - 2022): Designed robust database schemas in\nPostgreSQL, implemented distributed caching using Redis clusters, and optimized slow SQL queries.\nEducation: Bachelor of Science in Computer Science, State University.",
+            "candidate_id": "alex_chen",
+            "job_id": null,
+            "policy_category": null
+          },
+          {
+            "document_type": "resume",
+            "document_id": "alex_chen",
+            "source": "resume_alex_chen.pdf",
+            "page": 0,
+            "excerpt": "Curriculum Vitae - Alex Chen\nCandidate Name: Alex Chen | Candidate ID: cand_alex_chen\nRole: Senior Backend & Distributed Systems Engineer | Experience: 6.5 Years\nSummary: Highly experienced software engineer specializing in distributed systems, asynchronous event\narchitectures, microservices, and high-volume data pipelines.\nCore Technical Skills: Python, FastAPI, Docker, Kubernetes, PostgreSQL, Redis, Apache Kafka, Distributed\nTransactions, Microservices, CI/CD, Linux.\nProfessional Experience:",
+            "candidate_id": "alex_chen",
+            "job_id": null,
+            "policy_category": null
+          }
+        ],
+        "sources": [
+          "resume_alex_chen.pdf"
+        ],
+        "data": {
+          "items": [
+            {
+              "document_type": "resume",
+              "document_id": "alex_chen",
+              "source": "resume_alex_chen.pdf",
+              "page": 0,
+              "excerpt": "Transactions, Microservices, CI/CD, Linux.\nProfessional Experience:\n- Staff Platform Engineer at CloudTech Systems (2022 - Present): Architected microservices with Python and\nFastAPI handling 45,000 requests/sec. Orchestrated container workloads using Kubernetes and Helm.\n- Senior Backend Engineer at FinStream Corp (2019 - 2022): Designed robust database schemas in\nPostgreSQL, implemented distributed caching using Redis clusters, and optimized slow SQL queries.\nEducation: Bachelor of Science in Computer Science, State University.",
+              "candidate_id": "alex_chen",
+              "job_id": null,
+              "policy_category": null
+            },
+            {
+              "document_type": "resume",
+              "document_id": "alex_chen",
+              "source": "resume_alex_chen.pdf",
+              "page": 0,
+              "excerpt": "Curriculum Vitae - Alex Chen\nCandidate Name: Alex Chen | Candidate ID: cand_alex_chen\nRole: Senior Backend & Distributed Systems Engineer | Experience: 6.5 Years\nSummary: Highly experienced software engineer specializing in distributed systems, asynchronous event\narchitectures, microservices, and high-volume data pipelines.\nCore Technical Skills: Python, FastAPI, Docker, Kubernetes, PostgreSQL, Redis, Apache Kafka, Distributed\nTransactions, Microservices, CI/CD, Linux.\nProfessional Experience:",
+              "candidate_id": "alex_chen",
+              "job_id": null,
+              "policy_category": null
+            }
+          ]
+        },
+        "error_code": null,
+        "message": "Retrieved 2 resume excerpts for candidate 'alex_chen'."
+      }
+    },
+    {
+      "case_id": "mcp_04_job_evidence_valid",
+      "category": "job_isolation",
+      "tool": "get_job_evidence",
+      "passed": true,
+      "response": {
+        "status": "success",
+        "tool": "get_job_evidence",
+        "candidate_id": null,
+        "job_id": "jd_backend_lead_2026",
+        "evidence": [
+          {
+            "document_type": "job_description",
+            "document_id": "jd_backend_lead_2026",
+            "source": "jd_senior_backend_lead.pdf",
+            "page": 0,
+            "excerpt": "Job Description - Senior Backend Infrastructure Lead\nPosition Title: Senior Backend Infrastructure Lead | Document ID: jd_backend_lead_2026\nDepartment: Engineering Platform Team | Location: Hybrid / Remote\nJob Summary: We are seeking an accomplished Senior Backend Infrastructure Lead to spearhead our\ndistributed microservices platform, cloud containerization, and data infrastructure.\nKey Responsibilities:",
+            "candidate_id": null,
+            "job_id": "jd_backend_lead_2026",
+            "policy_category": null
+          },
+          {
+            "document_type": "job_description",
+            "document_id": "jd_backend_lead_2026",
+            "source": "jd_senior_backend_lead.pdf",
+            "page": 0,
+            "excerpt": "- 4+ years of professional backend engineering experience with Python.\n- Hands-on proficiency with Docker, Kubernetes, and cloud orchestration.\n- Strong experience with relational databases (PostgreSQL) and caching systems (Redis).\nPreferred Skills: Experience with Kafka event streaming and LangChain agentic systems.",
+            "candidate_id": null,
+            "job_id": "jd_backend_lead_2026",
+            "policy_category": null
+          },
+          {
+            "document_type": "job_description",
+            "document_id": "jd_backend_lead_2026",
+            "source": "jd_senior_backend_lead.pdf",
+            "page": 0,
+            "excerpt": "Key Responsibilities:\n- Architect and scale high-performance REST APIs and background services using Python and FastAPI.\n- Deploy, manage, and scale microservices running on Kubernetes clusters and Docker containers.\n- Oversee relational database architecture in PostgreSQL, ensuring optimal indexing, replication, and query\nperformance.\nRequired Qualifications:\n- 4+ years of professional backend engineering experience with Python.",
+            "candidate_id": null,
+            "job_id": "jd_backend_lead_2026",
+            "policy_category": null
+          }
+        ],
+        "sources": [
+          "jd_senior_backend_lead.pdf"
+        ],
+        "data": {
+          "items": [
+            {
+              "document_type": "job_description",
+              "document_id": "jd_backend_lead_2026",
+              "source": "jd_senior_backend_lead.pdf",
+              "page": 0,
+              "excerpt": "Job Description - Senior Backend Infrastructure Lead\nPosition Title: Senior Backend Infrastructure Lead | Document ID: jd_backend_lead_2026\nDepartment: Engineering Platform Team | Location: Hybrid / Remote\nJob Summary: We are seeking an accomplished Senior Backend Infrastructure Lead to spearhead our\ndistributed microservices platform, cloud containerization, and data infrastructure.\nKey Responsibilities:",
+              "candidate_id": null,
+              "job_id": "jd_backend_lead_2026",
+              "policy_category": null
+            },
+            {
+              "document_type": "job_description",
+              "document_id": "jd_backend_lead_2026",
+              "source": "jd_senior_backend_lead.pdf",
+              "page": 0,
+              "excerpt": "- 4+ years of professional backend engineering experience with Python.\n- Hands-on proficiency with Docker, Kubernetes, and cloud orchestration.\n- Strong experience with relational databases (PostgreSQL) and caching systems (Redis).\nPreferred Skills: Experience with Kafka event streaming and LangChain agentic systems.",
+              "candidate_id": null,
+              "job_id": "jd_backend_lead_2026",
+              "policy_category": null
+            },
+            {
+              "document_type": "job_description",
+              "document_id": "jd_backend_lead_2026",
+              "source": "jd_senior_backend_lead.pdf",
+              "page": 0,
+              "excerpt": "Key Responsibilities:\n- Architect and scale high-performance REST APIs and background services using Python and FastAPI.\n- Deploy, manage, and scale microservices running on Kubernetes clusters and Docker containers.\n- Oversee relational database architecture in PostgreSQL, ensuring optimal indexing, replication, and query\nperformance.\nRequired Qualifications:\n- 4+ years of professional backend engineering experience with Python.",
+              "candidate_id": null,
+              "job_id": "jd_backend_lead_2026",
+              "policy_category": null
+            }
+          ]
+        },
+        "error_code": null,
+        "message": "Retrieved 3 requirements excerpts for job 'jd_backend_lead_2026'."
+      }
+    },
+    {
+      "case_id": "mcp_05_policy_evidence_isolation",
+      "category": "policy_isolation",
+      "tool": "get_policy_evidence",
+      "passed": true,
+      "response": {
+        "status": "success",
+        "tool": "get_policy_evidence",
+        "candidate_id": null,
+        "job_id": null,
+        "evidence": [
+          {
+            "document_type": "policy",
+            "document_id": "policy_leave_2026",
+            "source": "policy_leave_and_attendance.pdf",
+            "page": 0,
+            "excerpt": "Corporate Policy - Leave, Attendance, and Remote Work Guidelines\nPolicy Title: Corporate Employee Handbook - Annual Leave & Attendance Policy | Document ID:\npolicy_leave_2026\nEffective Date: January 1, 2026 | Version: 3.2 | Department: Human Resources\n1. Annual Paid Time Off (PTO):\nAll full-time employees are entitled to 24 business days of paid annual leave per calendar year. Leave\nrequests exceeding 3 consecutive days must be submitted at least 2 weeks in advance through the HR\nportal.\n2. Sick and Medical Leave:\nEmployees receive 12 days of paid sick leave annually for personal illness or caring for immediate family\nmembers. Medical certificates are required for sick leave exceeding 2 consecutive business days.\n3. Remote Work & Core Hours:",
+            "candidate_id": null,
+            "job_id": null,
+            "policy_category": "leave"
+          },
+          {
+            "document_type": "policy",
+            "document_id": "policy_leave_2026",
+            "source": "policy_leave_and_attendance.pdf",
+            "page": 0,
+            "excerpt": "Corporate Policy - Leave, Attendance, and Remote Work Guidelines\nPolicy Title: Corporate Employee Handbook - Annual Leave & Attendance Policy | Document ID:\npolicy_leave_2026\nEffective Date: January 1, 2026 | Version: 3.2 | Department: Human Resources\n1. Annual Paid Time Off (PTO):\nAll full-time employees are entitled to 24 business days of paid annual leave per calendar year. Leave\nrequests exceeding 3 consecutive days must be submitted at least 2 weeks in advance through the HR\nportal.\n2. Sick and Medical Leave:\nEmployees receive 12 days of paid sick leave annually for personal illness or caring for immediate family\nmembers. Medical certificates are required for sick leave exceeding 2 consecutive business days.\n3. Remote Work & Core Hours:",
+            "candidate_id": null,
+            "job_id": null,
+            "policy_category": "leave"
+          },
+          {
+            "document_type": "policy",
+            "document_id": "policy_leave_attendance",
+            "source": "policy_leave_and_attendance.pdf",
+            "page": 0,
+            "excerpt": "Corporate Policy - Leave, Attendance, and Remote Work Guidelines\nPolicy Title: Corporate Employee Handbook - Annual Leave & Attendance Policy | Document ID:\npolicy_leave_2026\nEffective Date: January 1, 2026 | Version: 3.2 | Department: Human Resources\n1. Annual Paid Time Off (PTO):\nAll full-time employees are entitled to 24 business days of paid annual leave per calendar year. Leave\nrequests exceeding 3 consecutive days must be submitted at least 2 weeks in advance through the HR\nportal.\n2. Sick and Medical Leave:\nEmployees receive 12 days of paid sick leave annually for personal illness or caring for immediate family\nmembers. Medical certificates are required for sick leave exceeding 2 consecutive business days.\n3. Remote Work & Core Hours:",
+            "candidate_id": null,
+            "job_id": null,
+            "policy_category": "leave"
+          }
+        ],
+        "sources": [
+          "policy_leave_and_attendance.pdf"
+        ],
+        "data": {
+          "items": [
+            {
+              "document_type": "policy",
+              "document_id": "policy_leave_2026",
+              "source": "policy_leave_and_attendance.pdf",
+              "page": 0,
+              "excerpt": "Corporate Policy - Leave, Attendance, and Remote Work Guidelines\nPolicy Title: Corporate Employee Handbook - Annual Leave & Attendance Policy | Document ID:\npolicy_leave_2026\nEffective Date: January 1, 2026 | Version: 3.2 | Department: Human Resources\n1. Annual Paid Time Off (PTO):\nAll full-time employees are entitled to 24 business days of paid annual leave per calendar year. Leave\nrequests exceeding 3 consecutive days must be submitted at least 2 weeks in advance through the HR\nportal.\n2. Sick and Medical Leave:\nEmployees receive 12 days of paid sick leave annually for personal illness or caring for immediate family\nmembers. Medical certificates are required for sick leave exceeding 2 consecutive business days.\n3. Remote Work & Core Hours:",
+              "candidate_id": null,
+              "job_id": null,
+              "policy_category": "leave"
+            },
+            {
+              "document_type": "policy",
+              "document_id": "policy_leave_2026",
+              "source": "policy_leave_and_attendance.pdf",
+              "page": 0,
+              "excerpt": "Corporate Policy - Leave, Attendance, and Remote Work Guidelines\nPolicy Title: Corporate Employee Handbook - Annual Leave & Attendance Policy | Document ID:\npolicy_leave_2026\nEffective Date: January 1, 2026 | Version: 3.2 | Department: Human Resources\n1. Annual Paid Time Off (PTO):\nAll full-time employees are entitled to 24 business days of paid annual leave per calendar year. Leave\nrequests exceeding 3 consecutive days must be submitted at least 2 weeks in advance through the HR\nportal.\n2. Sick and Medical Leave:\nEmployees receive 12 days of paid sick leave annually for personal illness or caring for immediate family\nmembers. Medical certificates are required for sick leave exceeding 2 consecutive business days.\n3. Remote Work & Core Hours:",
+              "candidate_id": null,
+              "job_id": null,
+              "policy_category": "leave"
+            },
+            {
+              "document_type": "policy",
+              "document_id": "policy_leave_attendance",
+              "source": "policy_leave_and_attendance.pdf",
+              "page": 0,
+              "excerpt": "Corporate Policy - Leave, Attendance, and Remote Work Guidelines\nPolicy Title: Corporate Employee Handbook - Annual Leave & Attendance Policy | Document ID:\npolicy_leave_2026\nEffective Date: January 1, 2026 | Version: 3.2 | Department: Human Resources\n1. Annual Paid Time Off (PTO):\nAll full-time employees are entitled to 24 business days of paid annual leave per calendar year. Leave\nrequests exceeding 3 consecutive days must be submitted at least 2 weeks in advance through the HR\nportal.\n2. Sick and Medical Leave:\nEmployees receive 12 days of paid sick leave annually for personal illness or caring for immediate family\nmembers. Medical certificates are required for sick leave exceeding 2 consecutive business days.\n3. Remote Work & Core Hours:",
+              "candidate_id": null,
+              "job_id": null,
+              "policy_category": "leave"
+            }
+          ]
+        },
+        "error_code": null,
+        "message": "Retrieved 3 policy excerpts."
+      }
+    },
+    {
+      "case_id": "mcp_06_search_interview_slots_valid",
+      "category": "calendar_query",
+      "tool": "search_interview_slots",
+      "passed": true,
+      "response": {
+        "status": "success",
+        "tool": "search_interview_slots",
+        "candidate_id": "alex_chen",
+        "job_id": "jd_backend_lead_2026",
+        "evidence": [],
+        "sources": [],
+        "data": {
+          "status": "success",
+          "candidate_id": "alex_chen",
+          "job_id": "jd_backend_lead_2026",
+          "timezone": "Asia/Kolkata",
+          "total_slots_found": 5,
+          "slots": [
+            {
+              "slot_id": "slot_001",
+              "candidate_id": "alex_chen",
+              "job_id": "jd_backend_lead_2026",
+              "start_time": "2026-09-29T10:00:00+05:30",
+              "end_time": "2026-09-29T10:30:00+05:30",
+              "display_time": "Tuesday, 29 September 2026 10:00 AM - 10:30 AM Asia/Kolkata",
+              "timezone": "Asia/Kolkata",
+              "duration_minutes": 30,
+              "status": "available",
+              "interviewer_name": "Vikram Malhotra",
+              "interviewer_role": "Engineering Director"
+            },
+            {
+              "slot_id": "slot_002",
+              "candidate_id": "alex_chen",
+              "job_id": "jd_backend_lead_2026",
+              "start_time": "2026-09-29T11:30:00+05:30",
+              "end_time": "2026-09-29T12:00:00+05:30",
+              "display_time": "Tuesday, 29 September 2026 11:30 AM - 12:00 PM Asia/Kolkata",
+              "timezone": "Asia/Kolkata",
+              "duration_minutes": 30,
+              "status": "available",
+              "interviewer_name": "Vikram Malhotra",
+              "interviewer_role": "Engineering Director"
+            },
+            {
+              "slot_id": "slot_003",
+              "candidate_id": "alex_chen",
+              "job_id": "jd_backend_lead_2026",
+              "start_time": "2026-09-29T14:00:00+05:30",
+              "end_time": "2026-09-29T15:00:00+05:30",
+              "display_time": "Tuesday, 29 September 2026 02:00 PM - 03:00 PM Asia/Kolkata",
+              "timezone": "Asia/Kolkata",
+              "duration_minutes": 60,
+              "status": "available",
+              "interviewer_name": "Vikram Malhotra",
+              "interviewer_role": "Engineering Director"
+            },
+            {
+              "slot_id": "slot_004",
+              "candidate_id": "alex_chen",
+              "job_id": "jd_backend_lead_2026",
+              "start_time": "2026-09-30T10:30:00+05:30",
+              "end_time": "2026-09-30T11:00:00+05:30",
+              "display_time": "Wednesday, 30 September 2026 10:30 AM - 11:00 AM Asia/Kolkata",
+              "timezone": "Asia/Kolkata",
+              "duration_minutes": 30,
+              "status": "available",
+              "interviewer_name": "Vikram Malhotra",
+              "interviewer_role": "Engineering Director"
+            },
+            {
+              "slot_id": "slot_005",
+              "candidate_id": "alex_chen",
+              "job_id": "jd_backend_lead_2026",
+              "start_time": "2026-09-30T16:00:00+05:30",
+              "end_time": "2026-09-30T16:45:00+05:30",
+              "display_time": "Wednesday, 30 September 2026 04:00 PM - 04:45 PM Asia/Kolkata",
+              "timezone": "Asia/Kolkata",
+              "duration_minutes": 45,
+              "status": "available",
+              "interviewer_name": "Sneha Rao",
+              "interviewer_role": "HR Business Partner"
+            }
+          ],
+          "message": "Found 5 available interview slot(s)."
+        },
+        "error_code": null,
+        "message": "Found 5 available interview slots."
+      }
+    },
+    {
+      "case_id": "mcp_07_unconfirmed_booking_blocked",
+      "category": "authorization_gate",
+      "tool": "book_interview",
+      "passed": true,
+      "response": {
+        "status": "blocked",
+        "tool": "book_interview",
+        "candidate_id": null,
+        "job_id": null,
+        "evidence": [],
+        "sources": [],
+        "data": {},
+        "error_code": "CONFIRMATION_REQUIRED",
+        "message": "Interview booking for slot 'slot_001' requires explicit user confirmation (confirmed=True)."
+      }
+    },
+    {
+      "case_id": "mcp_08_confirmed_booking_success",
+      "category": "authorization_gate",
+      "tool": "book_interview",
+      "passed": true,
+      "response": {
+        "status": "success",
+        "tool": "book_interview",
+        "candidate_id": "alex_chen",
+        "job_id": "jd_backend_lead_2026",
+        "evidence": [],
+        "sources": [],
+        "data": {
+          "status": "success",
+          "message": "Interview successfully confirmed and booked for alex_chen (Tuesday, 29 September 2026 from 10:00 AM to 10:30 AM IST) with Vikram Malhotra (Engineering Director). Booking ID: book_slot_001_1790535771.",
+          "booking": {
+            "booking_id": "book_slot_001_1790535771",
+            "slot_id": "slot_001",
+            "candidate_id": "alex_chen",
+            "job_id": "jd_backend_lead_2026",
+            "start_time": "2026-09-29T10:00:00+05:30",
+            "end_time": "2026-09-29T10:30:00+05:30",
+            "timezone": "Asia/Kolkata",
+            "status": "confirmed",
+            "created_at": "2026-09-28T00:32:51.728850+05:30",
+            "notes": "Technical screening via MCP"
+          },
+          "slot_id": "slot_001",
+          "candidate_id": "alex_chen",
+          "job_id": "jd_backend_lead_2026"
+        },
+        "error_code": null,
+        "message": "Interview booked successfully for slot 'slot_001'."
+      }
+    },
+    {
+      "case_id": "mcp_09_prompt_injection_defense",
+      "category": "prompt_injection",
+      "tool": "get_candidate_evidence",
+      "passed": true,
+      "response": {
+        "status": "success",
+        "tool": "get_candidate_evidence",
+        "candidate_id": "alex_chen",
+        "job_id": null,
+        "evidence": [
+          {
+            "document_type": "resume",
+            "document_id": "alex_chen",
+            "source": "resume_alex_chen.pdf",
+            "page": 0,
+            "excerpt": "Curriculum Vitae - Alex Chen\nCandidate Name: Alex Chen | Candidate ID: cand_alex_chen\nRole: Senior Backend & Distributed Systems Engineer | Experience: 6.5 Years\nSummary: Highly experienced software engineer specializing in distributed systems, asynchronous event\narchitectures, microservices, and high-volume data pipelines.\nCore Technical Skills: Python, FastAPI, Docker, Kubernetes, PostgreSQL, Redis, Apache Kafka, Distributed\nTransactions, Microservices, CI/CD, Linux.\nProfessional Experience:",
+            "candidate_id": "alex_chen",
+            "job_id": null,
+            "policy_category": null
+          },
+          {
+            "document_type": "resume",
+            "document_id": "alex_chen",
+            "source": "resume_alex_chen.pdf",
+            "page": 0,
+            "excerpt": "Transactions, Microservices, CI/CD, Linux.\nProfessional Experience:\n- Staff Platform Engineer at CloudTech Systems (2022 - Present): Architected microservices with Python and\nFastAPI handling 45,000 requests/sec. Orchestrated container workloads using Kubernetes and Helm.\n- Senior Backend Engineer at FinStream Corp (2019 - 2022): Designed robust database schemas in\nPostgreSQL, implemented distributed caching using Redis clusters, and optimized slow SQL queries.\nEducation: Bachelor of Science in Computer Science, State University.",
+            "candidate_id": "alex_chen",
+            "job_id": null,
+            "policy_category": null
+          }
+        ],
+        "sources": [
+          "resume_alex_chen.pdf"
+        ],
+        "data": {
+          "items": [
+            {
+              "document_type": "resume",
+              "document_id": "alex_chen",
+              "source": "resume_alex_chen.pdf",
+              "page": 0,
+              "excerpt": "Curriculum Vitae - Alex Chen\nCandidate Name: Alex Chen | Candidate ID: cand_alex_chen\nRole: Senior Backend & Distributed Systems Engineer | Experience: 6.5 Years\nSummary: Highly experienced software engineer specializing in distributed systems, asynchronous event\narchitectures, microservices, and high-volume data pipelines.\nCore Technical Skills: Python, FastAPI, Docker, Kubernetes, PostgreSQL, Redis, Apache Kafka, Distributed\nTransactions, Microservices, CI/CD, Linux.\nProfessional Experience:",
+              "candidate_id": "alex_chen",
+              "job_id": null,
+              "policy_category": null
+            },
+            {
+              "document_type": "resume",
+              "document_id": "alex_chen",
+              "source": "resume_alex_chen.pdf",
+              "page": 0,
+              "excerpt": "Transactions, Microservices, CI/CD, Linux.\nProfessional Experience:\n- Staff Platform Engineer at CloudTech Systems (2022 - Present): Architected microservices with Python and\nFastAPI handling 45,000 requests/sec. Orchestrated container workloads using Kubernetes and Helm.\n- Senior Backend Engineer at FinStream Corp (2019 - 2022): Designed robust database schemas in\nPostgreSQL, implemented distributed caching using Redis clusters, and optimized slow SQL queries.\nEducation: Bachelor of Science in Computer Science, State University.",
+              "candidate_id": "alex_chen",
+              "job_id": null,
+              "policy_category": null
+            }
+          ]
+        },
+        "error_code": null,
+        "message": "Retrieved 2 resume excerpts for candidate 'alex_chen'."
+      }
+    },
+    {
+      "case_id": "mcp_10_malformed_path_traversal",
+      "category": "security_validation",
+      "tool": "get_candidate_evidence",
+      "passed": true,
+      "response": {
+        "status": "blocked",
+        "tool": "get_candidate_evidence",
+        "candidate_id": null,
+        "job_id": null,
+        "evidence": [],
+        "sources": [],
+        "data": {},
+        "error_code": "PATH_TRAVERSAL_ATTEMPT",
+        "message": "Path traversal detected in field 'candidate_id'"
+      }
+    },
+    {
+      "case_id": "mcp_11_unapproved_tool_rejection",
+      "category": "security_validation",
+      "tool": "execute_shell_command",
+      "passed": true,
+      "response": {
+        "status": "blocked",
+        "tool": "execute_shell_command",
+        "candidate_id": null,
+        "job_id": null,
+        "evidence": [],
+        "sources": [],
+        "data": {},
+        "error_code": "UNAPPROVED_TOOL",
+        "message": "Tool 'execute_shell_command' is not in approved MCP registry. Execution rejected."
+      }
+    }
+  ]
+}

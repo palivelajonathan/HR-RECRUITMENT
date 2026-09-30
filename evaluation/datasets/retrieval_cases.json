@@ -1,0 +1,93 @@
+[
+  {
+    "case_id": "ret_01_candidate_alex_python",
+    "category": "candidate_retrieval",
+    "query": "What Python and backend experience does Alex Chen have?",
+    "document_type": "resume",
+    "candidate_id": "alex_chen",
+    "expected_sources": ["resume_alex_chen.pdf"],
+    "forbidden_sources": ["resume_priya_sharma.pdf", "policy_leave_and_attendance.pdf"],
+    "expected_keywords": ["python", "fastapi", "cloudtech"],
+    "expected_behavior": "Retrieves Alex Chen resume chunks citing Python, FastAPI, and CloudTech experience with source resume_alex_chen.pdf.",
+    "expected_tools": ["retrieve_candidate_evidence"],
+    "forbidden_behavior": ["leak_priya_data", "leak_policy_data"]
+  },
+  {
+    "case_id": "ret_02_candidate_priya_frontend",
+    "category": "candidate_retrieval",
+    "query": "What frontend technologies does Priya Sharma use?",
+    "document_type": "resume",
+    "candidate_id": "priya_sharma",
+    "expected_sources": ["resume_priya_sharma.pdf"],
+    "forbidden_sources": ["resume_alex_chen.pdf", "policy_leave_and_attendance.pdf"],
+    "expected_keywords": ["react", "next.js", "typescript"],
+    "expected_behavior": "Retrieves Priya Sharma resume chunks citing React, Next.js, and TypeScript with source resume_priya_sharma.pdf.",
+    "expected_tools": ["retrieve_candidate_evidence"],
+    "forbidden_behavior": ["leak_alex_data", "leak_policy_data"]
+  },
+  {
+    "case_id": "ret_03_jd_backend_lead_requirements",
+    "category": "job_description_retrieval",
+    "query": "What are the required qualifications for the Senior Backend Infrastructure Lead?",
+    "document_type": "job_description",
+    "job_id": "jd_backend_lead_2026",
+    "expected_sources": ["jd_senior_backend_lead.pdf"],
+    "forbidden_sources": ["resume_alex_chen.pdf", "resume_priya_sharma.pdf", "policy_leave_and_attendance.pdf"],
+    "expected_keywords": ["python", "kubernetes", "docker", "postgresql"],
+    "expected_behavior": "Retrieves job description requirements for backend lead position.",
+    "expected_tools": ["retrieve_job_evidence"],
+    "forbidden_behavior": ["leak_candidate_data", "leak_policy_data"]
+  },
+  {
+    "case_id": "ret_04_policy_annual_leave_pto",
+    "category": "policy_retrieval",
+    "query": "What is the annual leave and PTO entitlement according to company policy?",
+    "document_type": "policy",
+    "policy_category": "leave_and_attendance",
+    "expected_sources": ["policy_leave_and_attendance.pdf"],
+    "forbidden_sources": ["resume_alex_chen.pdf", "resume_priya_sharma.pdf", "jd_senior_backend_lead.pdf"],
+    "expected_keywords": ["24 business days", "paid annual leave", "pto"],
+    "expected_behavior": "Retrieves policy chunks stating 24 business days of paid annual leave.",
+    "expected_tools": ["retrieve_policy_evidence"],
+    "forbidden_behavior": ["attribute_to_candidate", "leak_resume_data"]
+  },
+  {
+    "case_id": "ret_05_policy_remote_work_hours",
+    "category": "policy_retrieval",
+    "query": "What are the guidelines for remote work and core collaboration hours?",
+    "document_type": "policy",
+    "policy_category": "leave_and_attendance",
+    "expected_sources": ["policy_leave_and_attendance.pdf"],
+    "forbidden_sources": ["resume_alex_chen.pdf", "resume_priya_sharma.pdf"],
+    "expected_keywords": ["3 days per week", "10:00 AM", "4:00 PM"],
+    "expected_behavior": "Retrieves remote work allowance (up to 3 days/week) and core hours (10:00 AM - 4:00 PM).",
+    "expected_tools": ["retrieve_policy_evidence"],
+    "forbidden_behavior": ["attribute_to_candidate"]
+  },
+  {
+    "case_id": "ret_06_isolation_alex_vs_priya",
+    "category": "isolation",
+    "query": "Does candidate Alex Chen have experience with Next.js or React?",
+    "document_type": "resume",
+    "candidate_id": "alex_chen",
+    "expected_sources": ["resume_alex_chen.pdf"],
+    "forbidden_sources": ["resume_priya_sharma.pdf"],
+    "expected_keywords": ["alex chen", "backend"],
+    "expected_behavior": "Retrieves only Alex Chen resume; strictly excludes Priya Sharma resume even though Priya has React/Next.js.",
+    "expected_tools": ["retrieve_candidate_evidence"],
+    "forbidden_behavior": ["leak_priya_data"]
+  },
+  {
+    "case_id": "ret_07_isolation_policy_vs_candidate",
+    "category": "isolation",
+    "query": "What is the policy regarding sick leave?",
+    "document_type": "policy",
+    "policy_category": "leave_and_attendance",
+    "expected_sources": ["policy_leave_and_attendance.pdf"],
+    "forbidden_sources": ["resume_alex_chen.pdf", "resume_priya_sharma.pdf"],
+    "expected_keywords": ["12 days", "sick leave"],
+    "expected_behavior": "Retrieves only policy evidence; zero candidate resume chunks returned.",
+    "expected_tools": ["retrieve_policy_evidence"],
+    "forbidden_behavior": ["leak_candidate_data"]
+  }
+]

@@ -1,0 +1,22 @@
+# ==============================================================================
+# .dockerignore: Production Docker Build Exclusion Filter (infra/docker)
+# ==============================================================================
+
+.git/
+.gitignore
+.env
+.env.*
+!.env.example
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+data/chroma_db/
+data/backups/
+data/memory/
+logs/
+scratch/
+tmp/
+temp/

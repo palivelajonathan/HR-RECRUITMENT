@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: chroma-pvc
+  namespace: recruitment-ai
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: documents-pvc
+  namespace: recruitment-ai
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi

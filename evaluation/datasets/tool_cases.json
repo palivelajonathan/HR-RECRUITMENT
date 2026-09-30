@@ -1,0 +1,106 @@
+[
+  {
+    "case_id": "tool_01_retrieve_candidate_evidence",
+    "category": "tool_selection_and_execution",
+    "prompt": "Retrieve candidate evidence for Alex Chen regarding Python skills",
+    "expected_tool": "retrieve_candidate_evidence",
+    "expected_arguments": {
+      "candidate_id": "alex_chen",
+      "query": "Python skills"
+    },
+    "forbidden_tools": ["retrieve_policy_evidence", "book_interview"],
+    "expected_status": "success",
+    "expected_behavior": "Invokes retrieve_candidate_evidence with candidate_id='alex_chen' and returns structured candidate evidence."
+  },
+  {
+    "case_id": "tool_02_retrieve_job_evidence",
+    "category": "tool_selection_and_execution",
+    "prompt": "What are the job qualifications for position jd_backend_lead_2026?",
+    "expected_tool": "retrieve_job_evidence",
+    "expected_arguments": {
+      "job_id": "jd_backend_lead_2026",
+      "query": "required backend engineering qualifications"
+    },
+    "forbidden_tools": ["retrieve_policy_evidence", "book_interview"],
+    "expected_status": "success",
+    "expected_behavior": "Invokes retrieve_job_evidence with job_id='jd_backend_lead_2026' and query."
+  },
+  {
+    "case_id": "tool_03_retrieve_policy_evidence",
+    "category": "tool_selection_and_execution",
+    "prompt": "What is the corporate policy regarding paid annual leave?",
+    "expected_tool": "retrieve_policy_evidence",
+    "expected_arguments": {
+      "query": "paid annual leave"
+    },
+    "forbidden_tools": ["retrieve_candidate_evidence", "match_resume_to_job"],
+    "expected_status": "success",
+    "expected_behavior": "Invokes retrieve_policy_evidence with query and returns policy excerpts."
+  },
+  {
+    "case_id": "tool_04_match_resume_to_job",
+    "category": "tool_selection_and_execution",
+    "prompt": "Match candidate alex_chen against job description jd_backend_lead_2026",
+    "expected_tool": "match_resume_to_job",
+    "expected_arguments": {
+      "candidate_id": "alex_chen",
+      "job_id": "jd_backend_lead_2026"
+    },
+    "forbidden_tools": ["book_interview"],
+    "expected_status": "complete",
+    "expected_behavior": "Executes deterministic M3 set-based matching and returns matched_skills, missing_skills, and citations."
+  },
+  {
+    "case_id": "tool_05_search_interview_slots",
+    "category": "tool_selection_and_execution",
+    "prompt": "Search available interview slots for candidate alex_chen on position jd_backend_lead_2026",
+    "expected_tool": "search_interview_slots",
+    "expected_arguments": {
+      "candidate_id": "alex_chen",
+      "job_id": "jd_backend_lead_2026"
+    },
+    "forbidden_tools": ["book_interview"],
+    "expected_status": "success",
+    "expected_behavior": "Searches mock calendar and returns available slots without mutating state."
+  },
+  {
+    "case_id": "tool_06_book_interview_unconfirmed_blocked",
+    "category": "confirmation_gate",
+    "prompt": "Book interview slot_001 for candidate alex_chen without confirmation",
+    "expected_tool": "book_interview",
+    "expected_arguments": {
+      "slot_id": "slot_001",
+      "candidate_id": "alex_chen",
+      "job_id": "jd_backend_lead_2026",
+      "confirmed": false
+    },
+    "expected_status": "confirmation_required",
+    "expected_behavior": "Blocks booking state change and returns status='confirmation_required'."
+  },
+  {
+    "case_id": "tool_07_book_interview_confirmed_allowed",
+    "category": "confirmation_gate",
+    "prompt": "Book interview slot_001 for candidate alex_chen with explicit recruiter confirmation",
+    "expected_tool": "book_interview",
+    "expected_arguments": {
+      "slot_id": "slot_001",
+      "candidate_id": "alex_chen",
+      "job_id": "jd_backend_lead_2026",
+      "confirmed": true
+    },
+    "expected_status": "success",
+    "expected_behavior": "Successfully completes booking and returns status='success' with booking details."
+  },
+  {
+    "case_id": "tool_08_cross_domain_tool_separation",
+    "category": "domain_separation",
+    "prompt": "What are the core collaboration hours for remote employees?",
+    "expected_tool": "retrieve_policy_evidence",
+    "expected_arguments": {
+      "query": "core collaboration hours"
+    },
+    "forbidden_tools": ["retrieve_candidate_evidence", "search_interview_slots", "book_interview"],
+    "expected_status": "success",
+    "expected_behavior": "Strictly selects policy tool; never invokes candidate, match, or calendar tools for policy inquiry."
+  }
+]
